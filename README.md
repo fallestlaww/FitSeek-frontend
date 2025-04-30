@@ -1,3 +1,6 @@
+# This project is frontend part for FitSeek.
+All information about how to work with that project is [here](https://github.com/fallestlaww/FitSeek)
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
