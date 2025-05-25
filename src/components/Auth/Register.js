@@ -105,6 +105,8 @@ export default function Register() {
           flexDirection: 'column',
           alignItems: 'center',
           p: 3,
+          borderRadius: 5,
+          m: 2,
         }}
       >
         <Box
@@ -112,10 +114,10 @@ export default function Register() {
           src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small_2x/default-avatar-icon-of-social-media-user-vector.jpg" // Шлях до зображення (у public або зовнішнє посилання)
           alt="Логотип"
           sx={{
-            width: 100, // або '100px'
-            height: 100,
-            borderRadius: '50%', // Для круглого зображення
-            objectFit: 'cover', // Щоб зображення заповнило область
+            width: 70,
+            height: 70,
+            borderRadius: '50%',
+            objectFit: 'cover',
             mt: 2,
           }}
         />
@@ -140,6 +142,17 @@ export default function Register() {
             onChange={handleChange}
             error={!!errors.name}
             helperText={errors.name}
+            sx={{
+              '& .MuiInputBase-root': {
+                height: 40,
+              },
+              '& .MuiInputLabel-root': {
+                transform: 'translate(14px, 10px) scale(1)',
+                '&.Mui-focused': {
+                  transform: 'translate(14px, -9px) scale(0.75)',
+                },
+              },
+            }}
           />
 
           <TextField
@@ -153,6 +166,17 @@ export default function Register() {
             onChange={handleChange}
             error={!!errors.email}
             helperText={errors.email}
+            sx={{
+              '& .MuiInputBase-root': {
+                height: 40,
+              },
+              '& .MuiInputLabel-root': {
+                transform: 'translate(14px, 10px) scale(1)',
+                '&.Mui-focused': {
+                  transform: 'translate(14px, -9px) scale(0.75)',
+                },
+              },
+            }}
           />
 
           <TextField
@@ -166,6 +190,17 @@ export default function Register() {
             onChange={handleChange}
             error={!!errors.password}
             helperText={errors.password}
+            sx={{
+              '& .MuiInputBase-root': {
+                height: 40,
+              },
+              '& .MuiInputLabel-root': {
+                transform: 'translate(14px, 10px) scale(1)',
+                '&.Mui-focused': {
+                  transform: 'translate(14px, -9px) scale(0.75)',
+                },
+              },
+            }}
           />
 
           <TextField
@@ -179,6 +214,17 @@ export default function Register() {
             onChange={handleChange}
             error={!!errors.age}
             helperText={errors.age}
+            sx={{
+              '& .MuiInputBase-root': {
+                height: 40,
+              },
+              '& .MuiInputLabel-root': {
+                transform: 'translate(14px, 10px) scale(1)',
+                '&.Mui-focused': {
+                  transform: 'translate(14px, -9px) scale(0.75)',
+                },
+              },
+            }}
           />
 
           <TextField
@@ -193,6 +239,17 @@ export default function Register() {
             onChange={handleChange}
             error={!!errors.weight}
             helperText={errors.weight}
+            sx={{
+              '& .MuiInputBase-root': {
+                height: 40,
+              },
+              '& .MuiInputLabel-root': {
+                transform: 'translate(14px, 10px) scale(1)',
+                '&.Mui-focused': {
+                  transform: 'translate(14px, -9px) scale(0.75)',
+                },
+              },
+            }}
           />
 
           <TextField
@@ -203,9 +260,21 @@ export default function Register() {
             label="Стать"
             name="gender"
             value={formData.gender}
+            defaultValue="Male"
             onChange={handleChange}
             SelectProps={{
               native: true,
+            }}
+            sx={{
+              '& .MuiInputBase-root': {
+                height: 40,
+              },
+              '& .MuiInputLabel-root': {
+                transform: 'translate(14px, -13px) scale(1)',
+                '&.Mui-focused': {
+                  transform: 'translate(14px, -9px) scale(0.75)',
+                },
+              },
             }}
           >
             <option value="Male">Чоловіча</option>
