@@ -69,10 +69,60 @@ export default function Register() {
   };
 
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ mt: 4, mb: 4 }}>
+    <Container
+      maxWidth="100vw"
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        position: 'fixed',
+        height: '100vh',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundImage: 'url("https://images7.alphacoders.com/130/1308025.jpg")',
+        p: 0,
+        m: -1,
+        minWidth: '100%',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.4)',
+          zIndex: 0,
+        },
+      }}
+    >
+      <Box
+        sx={{
+          postion: 'relative',
+          zIndex: 5,
+          maxWidth: '40vw',
+          backgroundColor: 'rgba(255,255,255,0.9)',
+          display: 'flex',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          alignItems: 'center',
+          p: 3,
+          borderRadius: 5,
+          m: 2,
+        }}
+      >
+        <Box
+          component="img"
+          src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small_2x/default-avatar-icon-of-social-media-user-vector.jpg" // Шлях до зображення (у public або зовнішнє посилання)
+          alt="Логотип"
+          sx={{
+            width: 70,
+            height: 70,
+            borderRadius: '50%',
+            objectFit: 'cover',
+            mt: 2,
+          }}
+        />
         <Typography variant="h4" component="h1" gutterBottom align="center">
-          Реєстрація
+          Registration
         </Typography>
 
         {serverError && (
@@ -92,6 +142,17 @@ export default function Register() {
             onChange={handleChange}
             error={!!errors.name}
             helperText={errors.name}
+            sx={{
+              '& .MuiInputBase-root': {
+                height: 40,
+              },
+              '& .MuiInputLabel-root': {
+                transform: 'translate(14px, 10px) scale(1)',
+                '&.Mui-focused': {
+                  transform: 'translate(14px, -9px) scale(0.75)',
+                },
+              },
+            }}
           />
 
           <TextField
@@ -105,6 +166,17 @@ export default function Register() {
             onChange={handleChange}
             error={!!errors.email}
             helperText={errors.email}
+            sx={{
+              '& .MuiInputBase-root': {
+                height: 40,
+              },
+              '& .MuiInputLabel-root': {
+                transform: 'translate(14px, 10px) scale(1)',
+                '&.Mui-focused': {
+                  transform: 'translate(14px, -9px) scale(0.75)',
+                },
+              },
+            }}
           />
 
           <TextField
@@ -118,6 +190,17 @@ export default function Register() {
             onChange={handleChange}
             error={!!errors.password}
             helperText={errors.password}
+            sx={{
+              '& .MuiInputBase-root': {
+                height: 40,
+              },
+              '& .MuiInputLabel-root': {
+                transform: 'translate(14px, 10px) scale(1)',
+                '&.Mui-focused': {
+                  transform: 'translate(14px, -9px) scale(0.75)',
+                },
+              },
+            }}
           />
 
           <TextField
@@ -131,6 +214,17 @@ export default function Register() {
             onChange={handleChange}
             error={!!errors.age}
             helperText={errors.age}
+            sx={{
+              '& .MuiInputBase-root': {
+                height: 40,
+              },
+              '& .MuiInputLabel-root': {
+                transform: 'translate(14px, 10px) scale(1)',
+                '&.Mui-focused': {
+                  transform: 'translate(14px, -9px) scale(0.75)',
+                },
+              },
+            }}
           />
 
           <TextField
@@ -145,6 +239,17 @@ export default function Register() {
             onChange={handleChange}
             error={!!errors.weight}
             helperText={errors.weight}
+            sx={{
+              '& .MuiInputBase-root': {
+                height: 40,
+              },
+              '& .MuiInputLabel-root': {
+                transform: 'translate(14px, 10px) scale(1)',
+                '&.Mui-focused': {
+                  transform: 'translate(14px, -9px) scale(0.75)',
+                },
+              },
+            }}
           />
 
           <TextField
@@ -155,9 +260,21 @@ export default function Register() {
             label="Стать"
             name="gender"
             value={formData.gender}
+            defaultValue="Male"
             onChange={handleChange}
             SelectProps={{
               native: true,
+            }}
+            sx={{
+              '& .MuiInputBase-root': {
+                height: 40,
+              },
+              '& .MuiInputLabel-root': {
+                transform: 'translate(14px, -13px) scale(1)',
+                '&.Mui-focused': {
+                  transform: 'translate(14px, -9px) scale(0.75)',
+                },
+              },
             }}
           >
             <option value="Male">Чоловіча</option>
