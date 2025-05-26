@@ -21,10 +21,61 @@ export default function Login() {
   };
 
   return (
-    <Container maxWidth="xs">
-      <Box sx={{ mt: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Typography component="h1" variant="h5">
-          Вхід
+    <Container
+      maxWidth="xs"
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'fixed',
+        height: '100vh',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundImage: 'url("https://images7.alphacoders.com/130/1308025.jpg")',
+        p: 0,
+        m: -1,
+        minWidth: '100%',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.4)',
+          zIndex: 0,
+        },
+      }}
+    >
+      <Box
+        sx={{
+          postion: 'relative',
+          zIndex: 5,
+          maxWidth: '40vw',
+          maxHeight: '50%',
+          backgroundColor: 'rgba(255,255,255,0.9)',
+          display: 'flex',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          alignItems: 'center',
+          p: 3,
+          mt: -12,
+          borderRadius: 5,
+        }}
+      >
+        <Box
+          component="img"
+          src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small_2x/default-avatar-icon-of-social-media-user-vector.jpg" // Шлях до зображення (у public або зовнішнє посилання)
+          alt="Логотип"
+          sx={{
+            width: 100,
+            height: 100,
+            borderRadius: '50%',
+            objectFit: 'cover',
+          }}
+        />
+        <Typography component="h1" variant="h4">
+          Login
         </Typography>
         {error && <Typography color="error">{error}</Typography>}
         <Box component="form" onSubmit={handleLogin} sx={{ mt: 1 }}>
