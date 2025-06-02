@@ -36,31 +36,25 @@ export default function ProfilePage() {
         throw new Error('Not authenticated');
       }
 
-      console.log('Current user token:', currentUser.token);
-
       const response = await fetch(`${API_URL}/user`, {
         headers: {
           Authorization: `Bearer ${currentUser.token}`,
           'Content-Type': 'application/json',
         },
-        credentials: 'include', // Важливо для CORS
+        credentials: 'include',
       });
-
-      console.log('Response status:', response.status); // Логування статусу
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const userData = await response.json();
-      console.log('Full user data:', userData);
-
       setUser(userData);
       setFormData({
-        name: userData.name,
-        age: userData.age,
-        weight: userData.weight,
-        gender: userData.gender,
+        name: userData.name || '',
+        age: userData.age || '',
+        weight: userData.weight || '',
+        gender: userData.gender || '',
       });
     } catch (err) {
       console.error('Error fetching user data:', err);
@@ -73,18 +67,13 @@ export default function ProfilePage() {
   const handleUpdate = async () => {
     try {
       const currentUser = AuthService.getCurrentUser();
-      const response = await fetch('http://localhost:9060/user/update', {
+      const response = await fetch(`${API_URL}/user/update`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${currentUser.token}`,
         },
-        body: JSON.stringify({
-          name: formData.name,
-          age: formData.age,
-          weight: formData.weight,
-          gender: formData.gender,
-        }),
+        body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
@@ -103,7 +92,7 @@ export default function ProfilePage() {
     if (window.confirm('Are you sure you want to delete your account?')) {
       try {
         const currentUser = AuthService.getCurrentUser();
-        const response = await fetch('http://localhost:9060/user/delete', {
+        const response = await fetch(`${API_URL}/user/delete`, {
           method: 'DELETE',
           headers: {
             Authorization: `Bearer ${currentUser.token}`,
@@ -124,7 +113,7 @@ export default function ProfilePage() {
 
   if (loading) {
     return (
-      <Container maxWidth="sm" sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+      <Container maxWidth={false} sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
         <CircularProgress />
       </Container>
     );
@@ -132,8 +121,18 @@ export default function ProfilePage() {
 
   if (error) {
     return (
-      <Container maxWidth="sm" sx={{ mt: 4 }}>
-        <Alert severity="error">{error}</Alert>
+      <Container
+        maxWidth={false}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          mt: 4,
+          px: { xs: 2, sm: 3 },
+        }}
+      >
+        <Alert severity="error" sx={{ width: '100%' }}>
+          {error}
+        </Alert>
       </Container>
     );
   }
@@ -143,9 +142,32 @@ export default function ProfilePage() {
   }
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 4 }}>
-      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Avatar sx={{ width: 100, height: 100, mb: 2 }}>{user.name?.charAt(0) || 'U'}</Avatar>
+    <Container
+      maxWidth={false}
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        mt: 4,
+        px: { xs: 2, sm: 3 },
+      }}
+    >
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          width: { xs: '100%', sm: '600px' }, // Адаптивна   ширина
+          maxWidth: 600, // Обмежуємо максимальну ширину
+          margin: '0 auto', // Центральне вирівнювання
+          padding: { xs: 2, sm: 3 }, // Адаптивний внутрішній відступ
+          backgroundColor: 'rgba(255,255,255,0.8)', // Фонова тема
+          borderRadius: 2, // Радіус кутів
+          boxShadow: 1, // Тінь
+        }}
+      >
+        <Avatar sx={{ width: 100, height: 100, mb: 2 }}>
+          {user.name?.charAt(0).toUpperCase() || 'U'}
+        </Avatar>
 
         {editMode ? (
           <>
@@ -183,25 +205,25 @@ export default function ProfilePage() {
               <MenuItem value="Male">Male</MenuItem>
               <MenuItem value="Female">Female</MenuItem>
             </TextField>
-            <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
-              <Button variant="contained" onClick={handleUpdate}>
+            <Box sx={{ display: 'flex', gap: 2, mt: 2, width: '100%' }}>
+              <Button variant="contained" onClick={handleUpdate} fullWidth>
                 Save
               </Button>
-              <Button variant="outlined" onClick={() => setEditMode(false)}>
+              <Button variant="outlined" onClick={() => setEditMode(false)} fullWidth>
                 Cancel
               </Button>
             </Box>
           </>
         ) : (
           <>
-            <Typography variant="h4" component="h1" gutterBottom>
+            <Typography variant="h5" component="h1" gutterBottom align="center">
               {user.name}
             </Typography>
             <Typography variant="body1" gutterBottom>
               Email: {user.email}
             </Typography>
             <Typography variant="body1" gutterBottom>
-              Age: {user.age}
+              Age: {user.age || '—'}
             </Typography>
             <Typography variant="body1" gutterBottom>
               Weight: {user.weight} kg
@@ -209,11 +231,11 @@ export default function ProfilePage() {
             <Typography variant="body1" gutterBottom>
               Gender: {user.gender || 'Not specified'}
             </Typography>
-            <Box sx={{ display: 'flex', gap: 2, mt: 3 }}>
-              <Button variant="contained" onClick={() => setEditMode(true)}>
+            <Box sx={{ display: 'flex', gap: 2, mt: 3, width: '100%' }}>
+              <Button variant="contained" onClick={() => setEditMode(true)} fullWidth>
                 Edit Profile
               </Button>
-              <Button variant="outlined" color="error" onClick={handleDelete}>
+              <Button variant="outlined" color="error" onClick={handleDelete} fullWidth>
                 Delete Account
               </Button>
             </Box>
