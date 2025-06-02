@@ -63,6 +63,15 @@ export default function Register() {
     } catch (error) {
       console.error('Registration error:', error);
       setServerError(error.response?.data?.message || 'Помилка реєстрації');
+
+      setFormData({
+        name: '',
+        email: '',
+        password: '',
+        age: '',
+        weight: '',
+        gender: 'male',
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -146,12 +155,6 @@ export default function Register() {
               '& .MuiInputBase-root': {
                 height: 40,
               },
-              '& .MuiInputLabel-root': {
-                transform: 'translate(14px, 10px) scale(1)',
-                '&.Mui-focused': {
-                  transform: 'translate(14px, -9px) scale(0.75)',
-                },
-              },
             }}
           />
 
@@ -169,12 +172,6 @@ export default function Register() {
             sx={{
               '& .MuiInputBase-root': {
                 height: 40,
-              },
-              '& .MuiInputLabel-root': {
-                transform: 'translate(14px, 10px) scale(1)',
-                '&.Mui-focused': {
-                  transform: 'translate(14px, -9px) scale(0.75)',
-                },
               },
             }}
           />
@@ -194,12 +191,6 @@ export default function Register() {
               '& .MuiInputBase-root': {
                 height: 40,
               },
-              '& .MuiInputLabel-root': {
-                transform: 'translate(14px, 10px) scale(1)',
-                '&.Mui-focused': {
-                  transform: 'translate(14px, -9px) scale(0.75)',
-                },
-              },
             }}
           />
 
@@ -217,12 +208,6 @@ export default function Register() {
             sx={{
               '& .MuiInputBase-root': {
                 height: 40,
-              },
-              '& .MuiInputLabel-root': {
-                transform: 'translate(14px, 10px) scale(1)',
-                '&.Mui-focused': {
-                  transform: 'translate(14px, -9px) scale(0.75)',
-                },
               },
             }}
           />
@@ -243,12 +228,6 @@ export default function Register() {
               '& .MuiInputBase-root': {
                 height: 40,
               },
-              '& .MuiInputLabel-root': {
-                transform: 'translate(14px, 10px) scale(1)',
-                '&.Mui-focused': {
-                  transform: 'translate(14px, -9px) scale(0.75)',
-                },
-              },
             }}
           />
 
@@ -268,12 +247,6 @@ export default function Register() {
             sx={{
               '& .MuiInputBase-root': {
                 height: 40,
-              },
-              '& .MuiInputLabel-root': {
-                transform: 'translate(14px, -13px) scale(1)',
-                '&.Mui-focused': {
-                  transform: 'translate(14px, -9px) scale(0.75)',
-                },
               },
             }}
           >

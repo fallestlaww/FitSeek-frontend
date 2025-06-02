@@ -98,72 +98,71 @@ export default function HomePage() {
           </Typography>
         </Box>
 
-        {!user && (
-          <Box
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: 24, // Подвійний відступ (був 4, став 8)
+            flexWrap: 'wrap',
+            mb: 6,
+          }}
+        >
+          <Button
+            variant="outlined"
+            size="large"
             sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: 24, // Подвійний відступ (був 4, став 8)
-              flexWrap: 'wrap',
-              mb: 6,
+              width: 150,
+              color: 'white',
+              borderColor: 'white',
+              borderWidth: 2,
+              fontWeight: 700,
+              textTransform: 'none',
+              borderRadius: 2.5,
+              boxShadow: 3,
+              px: 5,
+              py: 1.8,
+              fontSize: '1.1rem',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                borderColor: 'rgba(255,255,255,0.9)',
+                bgcolor: 'rgba(255,255,255,0.15)',
+                transform: 'translateY(-3px)',
+                boxShadow: 5,
+              },
             }}
+            onClick={() => navigate('/register')}
           >
-            <Button
-              variant="outlined"
-              size="large"
-              sx={{
-                width: 150,
-                color: 'white',
-                borderColor: 'white',
-                borderWidth: 2,
-                fontWeight: 700,
-                textTransform: 'none',
-                borderRadius: 2.5,
-                boxShadow: 3,
-                px: 5,
-                py: 1.8,
-                fontSize: '1.1rem',
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  borderColor: 'rgba(255,255,255,0.9)',
-                  bgcolor: 'rgba(255,255,255,0.15)',
-                  transform: 'translateY(-3px)',
-                  boxShadow: 5,
-                },
-              }}
-              onClick={() => navigate('/register')}
-            >
-              Register
-            </Button>
-            <Button
-              variant="outlined"
-              size="large"
-              sx={{
-                width: 150,
-                color: 'white',
-                borderColor: 'white',
-                borderWidth: 2,
-                fontWeight: 700,
-                textTransform: 'none',
-                borderRadius: 2.5,
-                boxShadow: 3,
-                px: 5,
-                py: 1.8,
-                fontSize: '1.1rem',
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  borderColor: 'rgba(255,255,255,0.9)',
-                  bgcolor: 'rgba(255,255,255,0.15)',
-                  transform: 'translateY(-3px)',
-                  boxShadow: 5,
-                },
-              }}
-              onClick={() => navigate('/login')}
-            >
-              Login
-            </Button>
-          </Box>
-        )}
+            Register
+          </Button>
+          <Button
+            variant="outlined"
+            size="large"
+            sx={{
+              width: 150,
+              color: 'white',
+              borderColor: 'white',
+              borderWidth: 2,
+              fontWeight: 700,
+              textTransform: 'none',
+              borderRadius: 2.5,
+              boxShadow: 3,
+              px: 5,
+              py: 1.8,
+              fontSize: '1.1rem',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                borderColor: 'rgba(255,255,255,0.9)',
+                bgcolor: 'rgba(255,255,255,0.15)',
+                transform: 'translateY(-3px)',
+                boxShadow: 5,
+              },
+            }}
+            onClick={() => navigate('/login')}
+          >
+            Login
+          </Button>
+        </Box>
+
         {user && (
           <Paper
             elevation={3}

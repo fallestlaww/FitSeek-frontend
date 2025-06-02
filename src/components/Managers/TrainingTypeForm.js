@@ -3,10 +3,10 @@ import authService from '../../api/auth'; // шлях до API-сервісу
 import '../../css/TrainingTypeForm.css'; // Підключення CSS стилів
 
 const TrainingTypeForm = () => {
-  const [trainingType, setTrainingType] = useState('');
+  const [trainingType, setTrainingType] = useState('FullBody');
   const [userInfo, setUserInfo] = useState({
-    gender: { name: '' },
-    trainingType: { name: '' },
+    gender: { name: 'Male' },
+    trainingType: { name: 'FullBody' },
     age: '',
     weight: '',
   });
